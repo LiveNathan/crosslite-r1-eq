@@ -1,0 +1,84 @@
+name: Build Native Executables
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+        include:
+          - os: macos-latest
+            executable-suffix: ''
+            artifact-name: crosslite-r1-converter-macos
+          - os: windows-latest
+            executable-suffix: '.exe'
+            artifact-name: crosslite-r1-converter-windows
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup GraalVM
+        uses: graalvm/setup-graalvm@v1
+        with:
+          java-version: '24'
+          distribution: 'graalvm'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          native-image-job-reports: 'true'
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Build native executable
+        run: ./mvnw native:compile -Pnative --no-transfer-progress
+        shell: bash
+
+      - name: Test executable (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          ./target/crosslite-r1-eq help-conversion
+        shell: bash
+
+      - name: Test executable (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          ./target/crosslite-r1-eq.exe help-conversion
+        shell: bash
+
+      - name: Upload executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact-name }}
+          path: target/crosslite-r1-eq${{ matrix.executable-suffix }}
+          retention-days: 30
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            crosslite-r1-converter-macos/crosslite-r1-eq
+            crosslite-r1-converter-windows/crosslite-r1-eq.exe
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

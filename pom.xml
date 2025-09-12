@@ -75,21 +75,11 @@
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
-<!--                <configuration>-->
-<!--                    <buildArgs>-->
-<!--                        <buildArg>&#45;&#45;no-fallback</buildArg>-->
-<!--                        <buildArg>&#45;&#45;enable-preview</buildArg>-->
-<!--                        <buildArg>-H:+ReportExceptionStackTraces</buildArg>-->
-<!--                        <buildArg>-H:+AddAllCharsets</buildArg>-->
-<!--                        <buildArg>-H:IncludeResources=.*\.properties$</buildArg>-->
-<!--                        <buildArg>-H:IncludeResources=.*\.txt$</buildArg>-->
-<!--                        <buildArg>-H:IncludeResources=.*\.rcp$</buildArg>-->
-<!--                    </buildArgs>-->
-<!--                    <imageName>crosslite-r1-converter</imageName>-->
-<!--                    <mainClass>dev.nathanlively.crosslite_r1_eq.Application</mainClass>-->
-<!--                </configuration>-->
-            </plugin>
-            <plugin>
+                <configuration>
+                    <imageName>crosslite-r1-eq</imageName>
+                    <mainClass>dev.nathanlively.crosslite_r1_eq.Application</mainClass>
+                </configuration>
+            </plugin>            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
