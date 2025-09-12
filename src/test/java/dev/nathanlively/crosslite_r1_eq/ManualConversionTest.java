@@ -3,9 +3,9 @@ package dev.nathanlively.crosslite_r1_eq;
 import dev.nathanlively.crosslite_r1_eq.converter.EqConverter;
 import dev.nathanlively.crosslite_r1_eq.parser.CrossLiteParser;
 import dev.nathanlively.crosslite_r1_eq.writer.R1Writer;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,24 +13,26 @@ import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
 class ManualConversionTest {
 
-    @Autowired
-    private CrossLiteParser parser;
+    @TempDir
+    Path tempDir;
+    private FileConversionService service;
 
-    @Autowired
-    private EqConverter converter;
-
-    @Autowired
-    private R1Writer writer;
+    @BeforeEach
+    void setUp() {
+        CrossLiteParser parser = new CrossLiteParser();
+        EqConverter converter = new EqConverter();
+        R1Writer writer = new R1Writer();
+        service = new FileConversionService(parser, converter, writer);
+    }
 
     @Test
     void shouldPerformEndToEndConversion() throws IOException {
-        FileConversionService service = new FileConversionService(parser, converter, writer);
+        
 
         // Create a test file
-        Path testFile = Path.of("test_conversion.txt");
+        Path testFile = tempDir.resolve("test_conversion.txt");
         String testContent = """
             Layer 1
             IIR Bypassed.L 1 Ch 1
@@ -41,7 +43,7 @@ class ManualConversionTest {
 
         Files.writeString(testFile, testContent);
 
-        Path outputFile = Path.of("test_conversion.rcp");
+        Path outputFile = tempDir.resolve("test_conversion.rcp");
 
         // Perform conversion
         service.convertFile(testFile.toString(), outputFile.toString());
@@ -57,9 +59,7 @@ class ManualConversionTest {
         assertThat(output).contains("<E_1>1.000000</E_1>");
         assertThat(output).endsWith("</R1EQSETTINGS_20>");
 
-        // Cleanup
-        Files.deleteIfExists(testFile);
-        Files.deleteIfExists(outputFile);
+        
 
         System.out.println("✅ End-to-end conversion test passed!");
         System.out.println("Generated XML: " + output.substring(0, Math.min(200, output.length())) + "...");

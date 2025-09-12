@@ -3,10 +3,9 @@ package dev.nathanlively.crosslite_r1_eq;
 import dev.nathanlively.crosslite_r1_eq.converter.EqConverter;
 import dev.nathanlively.crosslite_r1_eq.parser.CrossLiteParser;
 import dev.nathanlively.crosslite_r1_eq.writer.R1Writer;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
@@ -16,24 +15,27 @@ import java.nio.file.Path;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTest
 class FileConversionServiceTest {
 
-    @Autowired
     private CrossLiteParser parser;
-
-    @Autowired
     private EqConverter converter;
-
-    @Autowired
     private R1Writer writer;
+    private FileConversionService service;
+
+    @BeforeEach
+    void setUp() {
+        parser = new CrossLiteParser();
+        converter = new EqConverter();
+        writer = new R1Writer();
+        service = new FileConversionService(parser, converter, writer);
+    }
 
     @TempDir
     Path tempDir;
 
     @Test
     void shouldConvertExample1File() throws IOException {
-        FileConversionService service = new FileConversionService(parser, converter, writer);
+        
 
         // Copy example file to temp directory
         ClassPathResource resource = new ClassPathResource("example1.txt");
@@ -63,7 +65,7 @@ class FileConversionServiceTest {
 
     @Test
     void shouldConvertExample2File() throws IOException {
-        FileConversionService service = new FileConversionService(parser, converter, writer);
+        
 
         ClassPathResource resource = new ClassPathResource("example2.txt");
         Path inputFile = tempDir.resolve("example2.txt");
@@ -89,7 +91,7 @@ class FileConversionServiceTest {
 
     @Test
     void shouldConvertDirectoryWithMultipleFiles() throws IOException {
-        FileConversionService service = new FileConversionService(parser, converter, writer);
+        
 
         // Create input directory with test files
         Path inputDir = tempDir.resolve("input");
@@ -116,7 +118,7 @@ class FileConversionServiceTest {
 
     @Test
     void shouldThrowExceptionForNonExistentFile() {
-        FileConversionService service = new FileConversionService(parser, converter, writer);
+        
 
         assertThrows(IOException.class, () ->
             service.convertFile("nonexistent.txt", "output.rcp"));
@@ -124,7 +126,7 @@ class FileConversionServiceTest {
 
     @Test
     void shouldThrowExceptionForNonExistentDirectory() {
-        FileConversionService service = new FileConversionService(parser, converter, writer);
+        
 
         assertThrows(IllegalArgumentException.class, () ->
             service.convertDirectory("nonexistent", "output"));
