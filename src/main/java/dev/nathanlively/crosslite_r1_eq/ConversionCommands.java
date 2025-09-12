@@ -1,5 +1,6 @@
 package dev.nathanlively.crosslite_r1_eq;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.shell.command.annotation.Command;
 import org.springframework.shell.command.annotation.Option;
 
@@ -23,7 +24,7 @@ public class ConversionCommands {
     @Command(command = "convert-file", description = "Convert a single CrossLite file to R1 format")
     public String convertFile(
             @Option(longNames = "input", shortNames = 'i', description = "Input CrossLite .txt file", required = true) String inputPath,
-            @Option(longNames = "output", shortNames = 'o', description = "Output R1 .rcp file (optional)") String outputPath) {
+            @Nullable @Option(longNames = "output", shortNames = 'o', description = "Output R1 .rcp file (optional)") String outputPath) {
 
         try {
             Path input = Paths.get(inputPath);
@@ -31,9 +32,10 @@ public class ConversionCommands {
                 return "Error: Input file does not exist: " + inputPath;
             }
 
-            fileConversionService.convertFile(inputPath, outputPath);
+            String actualOutputPath = outputPath != null ? outputPath : generateOutputPath(inputPath);
+            fileConversionService.convertFile(inputPath, actualOutputPath);
 
-            return String.format("Successfully converted '%s' to '%s'", inputPath, outputPath);
+            return String.format("Successfully converted '%s' to '%s'", inputPath, actualOutputPath);
         } catch (IOException e) {
             return "Error: " + e.getMessage();
         } catch (Exception e) {
@@ -44,12 +46,13 @@ public class ConversionCommands {
     @Command(command = "convert-directory", description = "Convert all .txt files in a directory to R1 format")
     public String convertDirectory(
             @Option(longNames = "input", shortNames = 'i', description = "Input directory containing .txt files", required = true) String inputDir,
-            @Option(longNames = "output", shortNames = 'o', description = "Output directory (optional, defaults to input directory)") String outputDir) {
+            @Nullable @Option(longNames = "output", shortNames = 'o', description = "Output directory (optional, defaults to input directory)") String outputDir) {
 
         try {
-            fileConversionService.convertDirectory(inputDir, outputDir);
+            String actualOutputDir = outputDir != null ? outputDir : inputDir;
+            fileConversionService.convertDirectory(inputDir, actualOutputDir);
 
-            return String.format("Successfully converted all .txt files from '%s' to '%s'", inputDir, outputDir);
+            return String.format("Successfully converted all .txt files from '%s' to '%s'", inputDir, actualOutputDir);
         } catch (IOException e) {
             return "Error: " + e.getMessage();
         } catch (Exception e) {
