@@ -24,7 +24,7 @@ class EqConverterTest {
 
         assertThat(result.filters()).hasSize(16);
 
-        R1Filter firstFilter = result.filters().get(0);
+        R1Filter firstFilter = result.filters().getFirst();
         assertThat(firstFilter.enabled()).isTrue();
         assertThat(firstFilter.frequency()).isEqualTo(1001.0);
         assertThat(firstFilter.gain()).isEqualTo(-6.0);
@@ -45,7 +45,7 @@ class EqConverterTest {
 
         R1Settings result = converter.convert(input);
 
-        R1Filter filter1 = result.filters().get(0);
+        R1Filter filter1 = result.filters().getFirst();
         assertThat(filter1.enabled()).isTrue();
         assertThat(filter1.frequency()).isEqualTo(1001.0);
         assertThat(filter1.gain()).isEqualTo(-6.0);
@@ -109,6 +109,7 @@ class EqConverterTest {
     }
 
     @Test
+
     void shouldLimitToMaxFilters() {
         // Create 20 EQ bands (more than R1's 16 limit)
         List<EqBand> bands = List.of(
@@ -124,7 +125,7 @@ class EqConverterTest {
         R1Settings result = converter.convert(input);
 
         assertThat(result.filters()).hasSize(16);
-        // First 16 should be enabled
+        // The first 16 should be enabled
         for (int i = 0; i < 16; i++) {
             assertThat(result.filters().get(i).enabled()).isTrue();
         }
