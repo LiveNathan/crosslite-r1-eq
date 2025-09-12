@@ -4,78 +4,78 @@ import dev.nathanlively.crosslite_r1_eq.domain.CrossLiteSettings;
 import dev.nathanlively.crosslite_r1_eq.domain.EqBand;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CrossLiteParserTest {
-    
+
     private final CrossLiteParser parser = new CrossLiteParser();
-    
+
     @Test
     void shouldParseSingleEqBand() {
         String content = "Frequency= 1001.0Hz Gain= -6.0dB Qbp= 0.750";
-        
+
         CrossLiteSettings result = parser.parse(content);
-        
-        assertEquals(1, result.eqBands().size());
+
+        assertThat(result.eqBands()).hasSize(1);
         EqBand band = result.eqBands().get(0);
-        assertEquals(1001.0, band.frequency());
-        assertEquals(-6.0, band.gain());
-        assertEquals(0.750, band.qFactor());
+        assertThat(band.frequency()).isEqualTo(1001.0);
+        assertThat(band.gain()).isEqualTo(-6.0);
+        assertThat(band.qFactor()).isEqualTo(0.750);
     }
-    
+
     @Test
     void shouldParseMultipleEqBands() {
         String content = """
             Frequency= 1001.0Hz Gain= -6.0dB Qbp= 0.750
             Frequency= 102.0Hz Gain= 4.3dB Qbp= 1.200
             """;
-        
+
         CrossLiteSettings result = parser.parse(content);
-        
-        assertEquals(2, result.eqBands().size());
-        
+
+        assertThat(result.eqBands()).hasSize(2);
+
         EqBand band1 = result.eqBands().get(0);
-        assertEquals(1001.0, band1.frequency());
-        assertEquals(-6.0, band1.gain());
-        assertEquals(0.750, band1.qFactor());
-        
+        assertThat(band1.frequency()).isEqualTo(1001.0);
+        assertThat(band1.gain()).isEqualTo(-6.0);
+        assertThat(band1.qFactor()).isEqualTo(0.750);
+
         EqBand band2 = result.eqBands().get(1);
-        assertEquals(102.0, band2.frequency());
-        assertEquals(4.3, band2.gain());
-        assertEquals(1.200, band2.qFactor());
+        assertThat(band2.frequency()).isEqualTo(102.0);
+        assertThat(band2.gain()).isEqualTo(4.3);
+        assertThat(band2.qFactor()).isEqualTo(1.200);
     }
-    
+
     @Test
     void shouldParseExtremeValues() {
         String content = """
             Frequency= 1001.0Hz Gain= -40.0dB Qbp= 0.100
             Frequency= 102.0Hz Gain= 40.0dB Qbp= 128.000
             """;
-        
+
         CrossLiteSettings result = parser.parse(content);
-        
-        assertEquals(2, result.eqBands().size());
-        
+
+        assertThat(result.eqBands()).hasSize(2);
+
         EqBand band1 = result.eqBands().get(0);
-        assertEquals(1001.0, band1.frequency());
-        assertEquals(-40.0, band1.gain());
-        assertEquals(0.100, band1.qFactor());
-        
+        assertThat(band1.frequency()).isEqualTo(1001.0);
+        assertThat(band1.gain()).isEqualTo(-40.0);
+        assertThat(band1.qFactor()).isEqualTo(0.100);
+
         EqBand band2 = result.eqBands().get(1);
-        assertEquals(102.0, band2.frequency());
-        assertEquals(40.0, band2.gain());
-        assertEquals(128.000, band2.qFactor());
+        assertThat(band2.frequency()).isEqualTo(102.0);
+        assertThat(band2.gain()).isEqualTo(40.0);
+        assertThat(band2.qFactor()).isEqualTo(128.000);
     }
-    
+
     @Test
     void shouldReturnEmptyListWhenNoEqBandsFound() {
         String content = "Some random content without EQ bands";
-        
+
         CrossLiteSettings result = parser.parse(content);
-        
-        assertTrue(result.eqBands().isEmpty());
+
+        assertThat(result.eqBands()).isEmpty();
     }
-    
+
     @Test
     void shouldIgnoreIrrelevantContent() {
         String content = """
@@ -89,13 +89,13 @@ class CrossLiteParserTest {
             Layer 2
             IIR Bypassed.
             """;
-        
+
         CrossLiteSettings result = parser.parse(content);
-        
-        assertEquals(1, result.eqBands().size());
+
+        assertThat(result.eqBands()).hasSize(1);
         EqBand band = result.eqBands().get(0);
-        assertEquals(1001.0, band.frequency());
-        assertEquals(-6.0, band.gain());
-        assertEquals(0.750, band.qFactor());
+        assertThat(band.frequency()).isEqualTo(1001.0);
+        assertThat(band.gain()).isEqualTo(-6.0);
+        assertThat(band.qFactor()).isEqualTo(0.750);
     }
 }
