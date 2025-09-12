@@ -1,0 +1,23 @@
+[
+  {
+    "name": "dev.nathanlively.crosslite_r1_eq.Application",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "dev.nathanlively.crosslite_r1_eq.ConversionCommands",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "dev.nathanlively.crosslite_r1_eq.FileConversionService",
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true
+  }
+]

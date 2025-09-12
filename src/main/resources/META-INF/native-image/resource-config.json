@@ -1,0 +1,27 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\Qapplication.properties\\E"
+      },
+      {
+        "pattern": "\\Qexample1.txt\\E"
+      },
+      {
+        "pattern": "\\Qexample1.rcp\\E"
+      },
+      {
+        "pattern": "\\Qexample2.txt\\E"
+      },
+      {
+        "pattern": "\\Qexample2.rcp\\E"
+      },
+      {
+        "pattern": "\\Qexample3.txt\\E"
+      },
+      {
+        "pattern": "\\Qexample3.rcp\\E"
+      }
+    ]
+  }
+}

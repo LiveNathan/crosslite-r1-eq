@@ -27,7 +27,7 @@
         <url/>
     </scm>
     <properties>
-        <java.version>24</java.version>
+        <java.version>21</java.version>
         <spring-shell.version>3.4.1</spring-shell.version>
 
     </properties>
@@ -69,10 +69,25 @@
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
+                <configuration>
+                    <buildArgs>
+                        <buildArg>--no-fallback</buildArg>
+                        <buildArg>--enable-preview</buildArg>
+                        <buildArg>-H:+ReportExceptionStackTraces</buildArg>
+                        <buildArg>-H:+AddAllCharsets</buildArg>
+                        <buildArg>-H:IncludeResources=.*\.properties$</buildArg>
+                        <buildArg>-H:IncludeResources=.*\.txt$</buildArg>
+                        <buildArg>-H:IncludeResources=.*\.rcp$</buildArg>
+                    </buildArgs>
+                    <imageName>crosslite-r1-converter</imageName>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>dev.nathanlively.crosslite_r1_eq.Application</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

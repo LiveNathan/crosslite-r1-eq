@@ -1,12 +1,17 @@
 package dev.nathanlively.crosslite_r1_eq;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ControllerTest {
+@SpringBootTest
+@SpringJUnitConfig
+class ConversionCommandsTest {
+    
     @Test
     void givenCrossliteFile_whenConvertToR1_thenCreateR1EqFile() {
         final String filenameCl = "example1.txt";
@@ -16,5 +21,4 @@ class ControllerTest {
         assertThat(resourceR1.exists()).isTrue();
         assertThat(resourceCl.exists()).isTrue();
     }
-
 }
