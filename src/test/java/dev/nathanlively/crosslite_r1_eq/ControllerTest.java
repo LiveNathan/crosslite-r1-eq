@@ -4,15 +4,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ControllerTest {
     @Test
     void givenCrossliteFile_whenConvertToR1_thenCreateR1EqFile() {
-        final String filename = "1keq.rcp";
-        Resource resource = new ClassPathResource(filename);
-        assertThat(resource.exists())
-                .isTrue();
+        final String filenameCl = "coef.txt";
+        final String filenameR1 = "1keq.rcp";
+        Resource resourceR1 = new ClassPathResource(filenameR1);
+        Resource resourceCl = new ClassPathResource(filenameCl);
+        assertThat(resourceR1.exists()).isTrue();
+        assertThat(resourceCl.exists()).isTrue();
     }
 
 }
