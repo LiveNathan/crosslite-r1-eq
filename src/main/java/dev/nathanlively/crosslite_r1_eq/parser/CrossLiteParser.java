@@ -14,23 +14,27 @@ import java.util.regex.Pattern;
  */
 @Component
 public class CrossLiteParser {
-    
+
     private static final Pattern EQ_PATTERN = Pattern.compile(
         "Frequency=\\s*(\\d+(?:\\.\\d+)?)Hz\\s+Gain=\\s*(-?\\d+(?:\\.\\d+)?)dB\\s+Qbp=\\s*(\\d+(?:\\.\\d+)?)"
     );
-    
+
     public CrossLiteSettings parse(String content) {
         List<EqBand> eqBands = new ArrayList<>();
         Matcher matcher = EQ_PATTERN.matcher(content);
-        
+
         while (matcher.find()) {
             double frequency = Double.parseDouble(matcher.group(1));
             double gain = Double.parseDouble(matcher.group(2));
             double qFactor = Double.parseDouble(matcher.group(3));
-            
+
             eqBands.add(new EqBand(frequency, gain, qFactor));
         }
-        
+
+        if (eqBands.isEmpty() && content.contains("Frequency=")) {
+            throw new IllegalArgumentException("Malformed EQ band found in content");
+        }
+
         return new CrossLiteSettings(eqBands);
     }
 }
