@@ -7,7 +7,6 @@ import org.springframework.shell.command.annotation.Option;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * Command line interface for CrossLite to R1 EQ conversion.
@@ -27,13 +26,13 @@ public class ConversionCommands {
             @Nullable @Option(longNames = "output", shortNames = 'o', description = "Output R1 .rcp file (optional)") String outputPath) {
 
         try {
-            Path input = Paths.get(inputPath);
+            Path input = PathUtils.resolvePath(inputPath);
             if (!Files.exists(input)) {
                 return "Error: Input file does not exist: " + inputPath;
             }
 
             String actualOutputPath = outputPath != null ? outputPath : generateOutputPath(inputPath);
-            fileConversionService.convertFile(inputPath, actualOutputPath);
+            fileConversionService.convertFile(input.toString(), actualOutputPath);
 
             return String.format("Successfully converted '%s' to '%s'", inputPath, actualOutputPath);
         } catch (IOException e) {
@@ -50,7 +49,11 @@ public class ConversionCommands {
 
         try {
             String actualOutputDir = outputDir != null ? outputDir : inputDir;
-            fileConversionService.convertDirectory(inputDir, actualOutputDir);
+            Path inputPath = PathUtils.resolvePath(inputDir);
+            if (!Files.exists(inputPath) || !Files.isDirectory(inputPath)) {
+                return "Error: Input directory does not exist: " + inputDir;
+            }
+            fileConversionService.convertDirectory(inputPath.toString(), actualOutputDir);
 
             return String.format("Successfully converted all .txt files from '%s' to '%s'", inputDir, actualOutputDir);
         } catch (IOException e) {
