@@ -1,0 +1,80 @@
+Layer 1
+IIR Bypassed.L 1 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 1001.0Hz Gain= -6.0dB Qbp= 0.750
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=0.926144439211431525,
+b1=-1.68926860667212719,
+b2=0.777730177608694673,
+a1=-1.68926860667212719,
+a2=0.703874616820126309,
+
+Layer 2
+IIR Bypassed.L 2 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 3
+IIR Bypassed.L 3 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 4
+IIR Bypassed.L 4 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 5
+IIR Bypassed.L 5 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 6
+IIR Bypassed.L 6 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 7
+IIR Bypassed.L 7 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 8
+IIR Bypassed.L 8 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 9
+IIR Bypassed.L 9 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 10
+IIR Bypassed.L 10 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
