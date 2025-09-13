@@ -47,13 +47,13 @@ jobs:
       - name: Test executable (macOS)
         if: matrix.os == 'macos-latest'
         run: |
-          ./target/crosslite-r1-eq help-conversion
+          ./target/crosslite-r1-eq help
         shell: bash
 
       - name: Test executable (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          ./target/crosslite-r1-eq.exe help-conversion
+          ./target/crosslite-r1-eq.exe help
         shell: bash
 
       - name: Upload executable
