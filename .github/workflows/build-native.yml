@@ -11,11 +11,13 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [macos-latest, windows-latest]
         include:
-          - os: macos-latest
+          - os: macos-13  # Intel
             executable-suffix: ''
-            artifact-name: crosslite-r1-converter-macos
+            artifact-name: crosslite-r1-converter-macos-intel
+          - os: macos-latest  # Apple Silicon
+            executable-suffix: ''
+            artifact-name: crosslite-r1-converter-macos-arm
           - os: windows-latest
             executable-suffix: '.exe'
             artifact-name: crosslite-r1-converter-windows
