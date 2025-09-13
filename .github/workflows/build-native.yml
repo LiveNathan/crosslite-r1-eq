@@ -79,4 +79,4 @@ jobs:
             crosslite-r1-converter-windows/crosslite-r1-eq.exe
           generate_release_notes: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
