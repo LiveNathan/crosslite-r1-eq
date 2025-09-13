@@ -10,7 +10,7 @@
     </parent>
     <groupId>dev.nathanlively</groupId>
     <artifactId>crosslite-r1-eq</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <name>crosslite-r1-eq</name>
     <description>Demo project for Spring Boot</description>
     <url/>
