@@ -76,13 +76,6 @@ public final class PathUtils {
             }
 
             if (!foundFolder) {
-                // Check if this looks like a filename (contains a dot followed by 2-4 characters)
-                if (remaining.matches(".*\\.[a-zA-Z]{2,4}$")) {
-                    // This is likely a filename, don't split it
-                    result.append(remaining);
-                    break;
-                }
-
                 // If no known folder found, look for the next capital letter or end
                 // This handles usernames and other folder names
                 int nextCapital = findNextCapitalOrKnownFolder(remaining, knownFolders);
@@ -102,7 +95,12 @@ public final class PathUtils {
     }
 
     private static int findNextCapitalOrKnownFolder(String text, String[] knownFolders) {
-        // First check for known folders
+        // First check if this looks like a filename (has extension)
+        if (text.matches("^[^A-Z]*\\.[a-zA-Z]{2,4}$")) {
+            return -1; // This is a filename, don't split it
+        }
+
+        // Check for known folders
         for (String folder : knownFolders) {
             int index = text.indexOf(folder);
             if (index > 0) {
@@ -111,19 +109,16 @@ public final class PathUtils {
         }
 
         // Look for capital letters (but skip the first character)
-        // Also check if this might be a filename by looking for extensions
         for (int i = 1; i < text.length(); i++) {
             if (Character.isUpperCase(text.charAt(i))) {
-                // Check if the rest of the string from this point looks like a filename
-                String remaining = text.substring(i);
-                if (remaining.matches(".*\\.[a-zA-Z]{2,4}$")) {
-                    // This capital letter is part of a filename, don't split here
-                    continue;
+                // Check if we're at the start of a filename
+                String fromHere = text.substring(i);
+                if (fromHere.matches("^[^A-Z]*\\.[a-zA-Z]{2,4}$")) {
+                    return -1; // Rest is a filename, don't split
                 }
                 return i;
             }
         }
 
-        return -1; // Not found
-    }
-}
+        return -1;
+    }}

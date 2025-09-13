@@ -22,23 +22,33 @@ public class ConversionCommands {
 
     @Command(command = "convert-file", description = "Convert a single CrossLite file to R1 format")
     public String convertFile(
-            @Option(longNames = "input", shortNames = 'i', description = "Input CrossLite .txt file", required = true) String inputPath,
-            @Nullable @Option(longNames = "output", shortNames = 'o', description = "Output R1 .rcp file (optional)") String outputPath) {
+            @Option(longNames = "input", shortNames = 'i', required = true) Path inputPath,
+            @Nullable @Option(longNames = "output", shortNames = 'o') Path outputPath) {
+
+        if (!Files.exists(inputPath)) {
+            // If path doesn't exist, show helpful message for Windows users
+            if (System.getProperty("os.name").toLowerCase().contains("win")) {
+                return """
+                Error: File not found.
+                
+                Windows users: Use forward slashes instead of backslashes:
+                  convert-file -i "P:/Sync/tech/file.txt"
+                  
+                Or use the interactive mode:
+                  convert-file-interactive
+                """;
+            }
+            return "Error: Input file does not exist: " + inputPath;
+        }
 
         try {
-            Path input = PathUtils.resolvePath(inputPath);
-            if (!Files.exists(input)) {
-                return "Error: Input file does not exist: " + inputPath;
-            }
-
-            String actualOutputPath = outputPath != null ? outputPath : generateOutputPath(inputPath);
-            fileConversionService.convertFile(input.toString(), actualOutputPath);
-
+            String actualOutputPath = outputPath != null
+                    ? outputPath.toString()
+                    : generateOutputPath(inputPath.toString());
+            fileConversionService.convertFile(inputPath.toString(), actualOutputPath);
             return String.format("Successfully converted '%s' to '%s'", inputPath, actualOutputPath);
         } catch (IOException e) {
             return "Error: " + e.getMessage();
-        } catch (Exception e) {
-            return "Unexpected error: " + e.getMessage();
         }
     }
 
