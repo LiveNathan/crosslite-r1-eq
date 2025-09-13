@@ -1,6 +1,8 @@
 package dev.nathanlively.crosslite_r1_eq;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.shell.command.annotation.Command;
+import org.springframework.shell.command.annotation.Option;
 import org.springframework.shell.component.PathInput;
 import org.springframework.shell.component.PathInput.PathInputContext;
 import org.springframework.shell.component.StringInput;
@@ -10,6 +12,8 @@ import org.springframework.shell.standard.AbstractShellComponent;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Collectors;
 
 @Command(group = "Conversion")
 public class ConversionCommands extends AbstractShellComponent {
@@ -20,7 +24,95 @@ public class ConversionCommands extends AbstractShellComponent {
         this.fileConversionService = fileConversionService;
     }
 
-    @Command(command = "convert", description = "Select file to convert")
+    @Command(command = "convert-file", description = "Convert a single CrossLite file to R1 format")
+    public String convertFile(
+            @Nullable @Option(longNames = "input", shortNames = 'i', description = "Input CrossLite .txt file") String inputPath,
+            @Nullable @Option(longNames = "output", shortNames = 'o', description = "Output R1 .rcp file (optional)") String outputPath) {
+
+        // If no input provided, fall back to interactive mode
+        if (inputPath == null) {
+            try {
+                return convertFileInteractive();
+            } catch (Exception e) {
+                return "❌ Interactive mode not available. Use: convert-file -i \"filename.txt\"";
+            }
+        }
+
+        try {
+            Path input = Paths.get(inputPath);
+            if (!Files.exists(input)) {
+                return "Error: Input file does not exist: " + inputPath;
+            }
+
+            String actualOutputPath = outputPath != null ? outputPath : generateOutputPath(inputPath);
+            fileConversionService.convertFile(inputPath, actualOutputPath);
+
+            return String.format("✅ Successfully converted '%s' to '%s'", inputPath, actualOutputPath);
+        } catch (IOException e) {
+            return "❌ Error: " + e.getMessage();
+        } catch (Exception e) {
+            return "❌ Unexpected error: " + e.getMessage();
+        }
+    }
+
+    @Command(command = "convert-directory", description = "Convert all .txt files in a directory to R1 format")
+    public String convertDirectory(
+            @Nullable @Option(longNames = "input", shortNames = 'i', description = "Input directory containing .txt files") String inputDir,
+            @Nullable @Option(longNames = "output", shortNames = 'o', description = "Output directory (optional, defaults to input directory)") String outputDir) {
+
+        // If no input provided, fall back to interactive mode
+        if (inputDir == null) {
+            try {
+                return convertDirectoryInteractive();
+            } catch (Exception e) {
+                return "❌ Interactive mode not available. Use: convert-directory -i \".\"";
+            }
+        }
+
+        try {
+            Path inputPath = Paths.get(inputDir);
+            if (!Files.exists(inputPath) || !Files.isDirectory(inputPath)) {
+                return "Error: Input directory does not exist or is not a directory: " + inputDir;
+            }
+
+            String actualOutputDir = outputDir != null ? outputDir : inputDir;
+            fileConversionService.convertDirectory(inputDir, actualOutputDir);
+
+            return String.format("✅ Successfully converted all .txt files from '%s' to '%s'", inputDir, actualOutputDir);
+        } catch (IOException e) {
+            return "❌ Error: " + e.getMessage();
+        } catch (Exception e) {
+            return "❌ Unexpected error: " + e.getMessage();
+        }
+    }
+
+    @Command(command = "list", description = "List .txt files in current directory")
+    public String listFiles() {
+        try {
+            Path currentDir = Paths.get(System.getProperty("user.dir"));
+            try (var paths = Files.walk(currentDir, 1)) {
+                var txtFiles = paths
+                        .filter(Files::isRegularFile)
+                        .filter(p -> p.toString().toLowerCase().endsWith(".txt"))
+                        .map(p -> p.getFileName().toString())
+                        .sorted()
+                        .toList();
+
+                if (txtFiles.isEmpty()) {
+                    return "No .txt files found in current directory:\n  " + currentDir;
+                }
+
+                return "CrossLite files in current directory:\n" +
+                       txtFiles.stream()
+                               .map(f -> "  " + f)
+                               .collect(Collectors.joining("\n"));
+            }
+        } catch (IOException e) {
+            return "❌ Error listing files: " + e.getMessage();
+        }
+    }
+
+    @Command(command = "convert-interactive", description = "Interactive file converter with file browser")
     public String convertFileInteractive() {
         // Get input file
         PathInput inputComponent = new PathInput(getTerminal(), "Enter CrossLite file path (.txt):");
@@ -91,7 +183,7 @@ public class ConversionCommands extends AbstractShellComponent {
         }
     }
 
-    @Command(command = "convert-directory", description = "Select directory to convert")
+    @Command(command = "convert-directory-interactive", description = "Interactive directory converter with file browser")
     public String convertDirectoryInteractive() {
         // Get input directory
         PathInput inputComponent = new PathInput(getTerminal(),
@@ -185,20 +277,41 @@ public class ConversionCommands extends AbstractShellComponent {
                 CrossLite to R1 EQ Converter
                 ============================
 
-                Interactive Commands (Recommended for Windows users):
-                ------------------------------------------------------
-                convert                       - Main interactive converter with menu
-                convert-directory             - Interactive directory conversion
+                Quick Commands:
+                ---------------
+                list                          - Show .txt files in current directory
+                convert-file                  - Convert single file (interactive if no args)
+                convert-directory             - Convert directory (interactive if no args)
 
-                Direct Commands:
-                ----------------
-                convert -i <file> [-o <output>]
-                convert-directory -i <dir> [-o <output-dir>]
+                Direct Usage (Windows-friendly):
+                ---------------------------------
+                convert-file -i "filename.txt" [-o "output.rcp"]
+                convert-directory -i "." [-o "output_dir"]
+
+                Interactive Commands (Mac/Linux):
+                ---------------------------------
+                convert-interactive           - Interactive file converter with file browser
+                convert-directory-interactive - Interactive directory converter with file browser
+
+                Windows Users - Important:
+                --------------------------
+                Due to path handling limitations, for direct commands:
+                1. Navigate to your files directory: cd C:\\MyFiles
+                2. Use filenames only: convert-file -i "settings.txt"
+                3. Use "." for current directory: convert-directory -i "."
+
+                Examples:
+                ---------
+                list
+                convert-file -i "eq_settings.txt"
+                convert-directory -i "." -o "converted"
 
                 Notes:
-                - Gain values are clamped to R1 limits (-18dB to +12dB)
-                - Q factor values are clamped to R1 limits (0.1 to 25.0)
-                - R1 format supports up to 16 EQ bands
+                ------
+                • Gain values clamped to R1 limits (-18dB to +12dB)
+                • Q factor values clamped to R1 limits (0.1 to 25.0)
+                • R1 format supports up to 16 EQ bands
+                • Output files get .rcp extension automatically
                 """;
     }
 

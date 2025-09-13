@@ -50,4 +50,29 @@ public class ConversionCommandShellTest {
                     .containsText("Enter CrossLite file path (.txt):");
         });
     }
+
+    @Test
+    void testNonInteractive() {
+        ShellTestClient.NonInteractiveShellSession session = client
+                .nonInterative("help")
+                .run();
+
+        await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> {
+            ShellAssertions.assertThat(session.screen())
+                    .containsText("AVAILABLE COMMANDS");
+        });
+    }
+
+    @Disabled("until I learn how to write tests for shell commands")
+    @Test
+    void givenValidPath_whenConvertNonInteractive_thenSuccess() {
+        ShellTestClient.NonInteractiveShellSession session = client
+                .nonInterative("convert-file -i example1.txt")
+                .run();
+
+        await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> {
+            ShellAssertions.assertThat(session.screen())
+                    .containsText("Successfully converted");
+        });
+    }
 }
