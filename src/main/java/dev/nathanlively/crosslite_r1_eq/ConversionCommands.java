@@ -1,18 +1,18 @@
 package dev.nathanlively.crosslite_r1_eq;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.shell.command.annotation.Command;
-import org.springframework.shell.command.annotation.Option;
+import org.springframework.shell.component.PathInput;
+import org.springframework.shell.component.PathInput.PathInputContext;
+import org.springframework.shell.component.StringInput;
+import org.springframework.shell.component.StringInput.StringInputContext;
+import org.springframework.shell.standard.AbstractShellComponent;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-/**
- * Command line interface for CrossLite to R1 EQ conversion.
- */
 @Command(group = "Conversion")
-public class ConversionCommands {
+public class ConversionCommands extends AbstractShellComponent {
 
     private final FileConversionService fileConversionService;
 
@@ -20,82 +20,181 @@ public class ConversionCommands {
         this.fileConversionService = fileConversionService;
     }
 
-    @Command(command = "convert-file", description = "Convert a single CrossLite file to R1 format")
-    public String convertFile(
-            @Option(longNames = "input", shortNames = 'i', required = true) Path inputPath,
-            @Nullable @Option(longNames = "output", shortNames = 'o') Path outputPath) {
+    @Command(command = "convert", description = "Select file to convert")
+    public String convertFileInteractive() {
+        // Get input file
+        PathInput inputComponent = new PathInput(getTerminal(), "Enter CrossLite file path (.txt):");
+        inputComponent.setResourceLoader(getResourceLoader());
+        inputComponent.setTemplateExecutor(getTemplateExecutor());
+        PathInputContext inputContext = inputComponent.run(PathInputContext.empty());
 
+        Path inputPath = inputContext.getResultValue();
+        if (inputPath == null) {
+            return "No input file selected. Conversion cancelled.";
+        }
         if (!Files.exists(inputPath)) {
-            // If path doesn't exist, show helpful message for Windows users
-            if (System.getProperty("os.name").toLowerCase().contains("win")) {
-                return """
-                Error: File not found.
-                
-                Windows users: Use forward slashes instead of backslashes:
-                  convert-file -i "P:/Sync/tech/file.txt"
-                  
-                Or use the interactive mode:
-                  convert-file-interactive
-                """;
+            return "Error: File does not exist: " + inputPath;
+        }
+        if (!inputPath.toString().toLowerCase().endsWith(".txt")) {
+            StringInput confirmComponent = new StringInput(getTerminal(),
+                    "File doesn't have .txt extension. Continue anyway? (yes/no):",
+                    "no");
+            confirmComponent.setResourceLoader(getResourceLoader());
+            confirmComponent.setTemplateExecutor(getTemplateExecutor());
+            StringInputContext confirmContext = confirmComponent.run(StringInputContext.empty());
+
+            if (!"yes".equalsIgnoreCase(confirmContext.getResultValue())) {
+                return "Conversion cancelled.";
             }
-            return "Error: Input file does not exist: " + inputPath;
         }
 
+        // Ask if user wants custom output path
+        StringInput customOutputComponent = new StringInput(getTerminal(),
+                "Use custom output path? (yes/no):",
+                "no");
+        customOutputComponent.setResourceLoader(getResourceLoader());
+        customOutputComponent.setTemplateExecutor(getTemplateExecutor());
+        StringInputContext customOutputContext = customOutputComponent.run(StringInputContext.empty());
+
+        String outputPath;
+        if ("yes".equalsIgnoreCase(customOutputContext.getResultValue())) {
+            // Get custom output path
+            PathInput outputComponent = new PathInput(getTerminal(),
+                    "Enter output file path (.rcp):");
+            outputComponent.setResourceLoader(getResourceLoader());
+            outputComponent.setTemplateExecutor(getTemplateExecutor());
+            PathInputContext outputContext = outputComponent.run(PathInputContext.empty());
+
+            Path customPath = outputContext.getResultValue();
+            if (customPath == null) {
+                // Use default
+                outputPath = generateOutputPath(inputPath.toString());
+                System.out.println("Using default output path: " + outputPath);
+            } else {
+                outputPath = customPath.toString();
+                // Ensure .rcp extension
+                if (!outputPath.toLowerCase().endsWith(".rcp")) {
+                    outputPath = outputPath + ".rcp";
+                }
+            }
+        } else {
+            outputPath = generateOutputPath(inputPath.toString());
+        }
+
+        // Perform conversion
         try {
-            String actualOutputPath = outputPath != null
-                    ? outputPath.toString()
-                    : generateOutputPath(inputPath.toString());
-            fileConversionService.convertFile(inputPath.toString(), actualOutputPath);
-            return String.format("Successfully converted '%s' to '%s'", inputPath, actualOutputPath);
+            fileConversionService.convertFile(inputPath.toString(), outputPath);
+            return String.format("✅ Successfully converted:\n  From: %s\n  To:   %s",
+                    inputPath, outputPath);
         } catch (IOException e) {
-            return "Error: " + e.getMessage();
+            return "❌ Error during conversion: " + e.getMessage();
         }
     }
 
-    @Command(command = "convert-directory", description = "Convert all .txt files in a directory to R1 format")
-    public String convertDirectory(
-            @Option(longNames = "input", shortNames = 'i', description = "Input directory containing .txt files", required = true) String inputDir,
-            @Nullable @Option(longNames = "output", shortNames = 'o', description = "Output directory (optional, defaults to input directory)") String outputDir) {
+    @Command(command = "convert-directory", description = "Select directory to convert")
+    public String convertDirectoryInteractive() {
+        // Get input directory
+        PathInput inputComponent = new PathInput(getTerminal(),
+                "Enter directory containing CrossLite files:");
+        inputComponent.setResourceLoader(getResourceLoader());
+        inputComponent.setTemplateExecutor(getTemplateExecutor());
+        PathInputContext inputContext = inputComponent.run(PathInputContext.empty());
 
+        Path inputDir = inputContext.getResultValue();
+        if (inputDir == null) {
+            return "No directory selected. Conversion cancelled.";
+        }
+
+        // Validate directory
+        if (!Files.exists(inputDir)) {
+            return "Error: Directory does not exist: " + inputDir;
+        }
+        if (!Files.isDirectory(inputDir)) {
+            return "Error: Path is not a directory: " + inputDir;
+        }
+
+        // Count .txt files
+        long txtFileCount;
         try {
-            String actualOutputDir = outputDir != null ? outputDir : inputDir;
-            Path inputPath = PathUtils.resolvePath(inputDir);
-            if (!Files.exists(inputPath) || !Files.isDirectory(inputPath)) {
-                return "Error: Input directory does not exist: " + inputDir;
+            try (var paths = Files.walk(inputDir)) {
+                txtFileCount = paths
+                        .filter(Files::isRegularFile)
+                        .filter(p -> p.toString().toLowerCase().endsWith(".txt"))
+                        .count();
             }
-            fileConversionService.convertDirectory(inputPath.toString(), actualOutputDir);
-
-            return String.format("Successfully converted all .txt files from '%s' to '%s'", inputDir, actualOutputDir);
         } catch (IOException e) {
-            return "Error: " + e.getMessage();
-        } catch (Exception e) {
-            return "Unexpected error: " + e.getMessage();
+            return "Error scanning directory: " + e.getMessage();
+        }
+
+        if (txtFileCount == 0) {
+            return "No .txt files found in directory: " + inputDir;
+        }
+
+        // Show count and ask for confirmation
+        StringInput confirmComponent = new StringInput(getTerminal(),
+                String.format("Found %d .txt file(s). Convert all? (yes/no):", txtFileCount),
+                "yes");
+        confirmComponent.setResourceLoader(getResourceLoader());
+        confirmComponent.setTemplateExecutor(getTemplateExecutor());
+        StringInputContext confirmContext = confirmComponent.run(StringInputContext.empty());
+
+        if (!"yes".equalsIgnoreCase(confirmContext.getResultValue())) {
+            return "Conversion cancelled.";
+        }
+
+        // Ask for output directory
+        StringInput customOutputComponent = new StringInput(getTerminal(),
+                "Use custom output directory? (yes/no):",
+                "no");
+        customOutputComponent.setResourceLoader(getResourceLoader());
+        customOutputComponent.setTemplateExecutor(getTemplateExecutor());
+        StringInputContext customOutputContext = customOutputComponent.run(StringInputContext.empty());
+
+        String outputDir;
+        if ("yes".equalsIgnoreCase(customOutputContext.getResultValue())) {
+            PathInput outputComponent = new PathInput(getTerminal(),
+                    "Enter output directory:");
+            outputComponent.setResourceLoader(getResourceLoader());
+            outputComponent.setTemplateExecutor(getTemplateExecutor());
+            PathInputContext outputContext = outputComponent.run(PathInputContext.empty());
+
+            Path customPath = outputContext.getResultValue();
+            if (customPath == null) {
+                outputDir = inputDir.toString(); // Same as input
+                System.out.println("Using input directory as output: " + outputDir);
+            } else {
+                outputDir = customPath.toString();
+            }
+        } else {
+            outputDir = inputDir.toString(); // Same directory as input
+        }
+
+        // Perform conversion
+        try {
+            fileConversionService.convertDirectory(inputDir.toString(), outputDir);
+            return String.format("✅ Successfully converted %d file(s) from:\n  %s\nto:\n  %s",
+                    txtFileCount, inputDir, outputDir);
+        } catch (IOException e) {
+            return "❌ Error during conversion: " + e.getMessage();
         }
     }
 
-    @Command(command = "help-conversion", description = "Show detailed help for conversion commands")
+    @Command(command = "help", description = "Show help for conversion commands")
     public String helpConversion() {
         return """
                 CrossLite to R1 EQ Converter
                 ============================
-                
-                This tool converts CrossLite EQ settings (.txt files) to d&b R1 format (.rcp files).
-                
-                Commands:
-                
-                convert-file --input <file.txt> [--output <file.rcp>]
-                    Convert a single file. If output is not specified, creates file.rcp in the same directory.
-                
-                convert-directory --input <directory> [--output <directory>]
-                    Convert all .txt files in a directory. If output directory is not specified,
-                    creates .rcp files in the same directory as the input files.
-                
-                Examples:
-                    convert-file -i example1.txt
-                    convert-file -i example1.txt -o converted/example1.rcp
-                    convert-directory -i ./crosslite-files
-                    convert-directory -i ./crosslite-files -o ./r1-files
-                
+
+                Interactive Commands (Recommended for Windows users):
+                ------------------------------------------------------
+                convert                       - Main interactive converter with menu
+                convert-directory             - Interactive directory conversion
+
+                Direct Commands:
+                ----------------
+                convert -i <file> [-o <output>]
+                convert-directory -i <dir> [-o <output-dir>]
+
                 Notes:
                 - Gain values are clamped to R1 limits (-18dB to +12dB)
                 - Q factor values are clamped to R1 limits (0.1 to 25.0)

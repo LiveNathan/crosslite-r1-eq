@@ -1,0 +1,18 @@
+// Custom Path Input Template that allows existing directories
+renderLoop(model, hasInput, resultValue, cursorRow) ::= <<
+<model.name><if(model.input)>: <model.input><endif>
+<if(model.message)><if(model.hasMessageLevelInfo)><model.message><endif><if(model.hasMessageLevelWarn)><model.message; format="yellow"><endif><if(model.hasMessageLevelError)><model.message; format="red"><endif>
+<endif>
+<if(hasInput)>
+<if(model.pathExists)>✓ Path exists: <model.pathType><endif>
+<if(model.pathNotExists)>✗ Path does not exist<endif>
+<endif>
+>>
+
+renderInput(model, cursorRow) ::= <<
+<renderLoop(model, true, false, cursorRow)>
+>>
+
+renderResult(model, cursorRow) ::= <<
+<model.name>: <model.resultValue>
+>>

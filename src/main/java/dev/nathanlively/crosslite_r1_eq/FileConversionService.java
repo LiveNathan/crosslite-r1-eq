@@ -31,7 +31,7 @@ public class FileConversionService {
     }
 
     public void convertFile(String inputPath, String outputPath) throws IOException {
-        String content = Files.readString(PathUtils.resolvePath(inputPath));
+        String content = Files.readString(Paths.get(inputPath));
         CrossLiteSettings crossLiteSettings = parser.parse(content);
         R1Settings r1Settings = converter.convert(crossLiteSettings);
         String xmlOutput = writer.writeToXml(r1Settings);
@@ -44,7 +44,7 @@ public class FileConversionService {
     }
 
     public void convertDirectory(String inputDir, String outputDir) throws IOException {
-        Path inputPath = PathUtils.resolvePath(inputDir);
+        Path inputPath = Paths.get(inputDir);
         Path outputPath = Paths.get(outputDir);
 
         if (!Files.exists(inputPath) || !Files.isDirectory(inputPath)) {
@@ -69,7 +69,4 @@ public class FileConversionService {
         }
     }
 
-    private String generateOutputPath(String inputPath) {
-        return inputPath.replaceAll("\\.txt$", ".rcp");
-    }
 }
