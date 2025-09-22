@@ -126,7 +126,7 @@ public class CrossLiteParser {
 
             if (line.isEmpty()) continue;
 
-            // Check for "IIR Bypassed.channelName"
+            // Check for "IIR Bypassed.channelName" (first channel pattern)
             Matcher firstChannelMatcher = FIRST_CHANNEL_PATTERN.matcher(line);
             if (firstChannelMatcher.matches()) {
                 // Save previous section if exists
@@ -138,38 +138,23 @@ public class CrossLiteParser {
                 continue;
             }
 
-            // Check for standalone channel name
-            if (currentChannel != null && // Must have found at least one channel already
-                !line.startsWith("IIR") &&
+            // Check for standalone channel name followed by IIR Crossover
+            if (!line.startsWith("IIR") &&
                 !line.startsWith("Layer") &&
                 !line.contains("Parametric EQ") &&
                 !line.contains("Magnitude Mode") &&
                 !line.contains("biquad") &&
                 !line.contains("=") &&
-                !line.matches("^\\d+\\).*")) {
+                !line.matches("^\\d+\\).*") &&
+                i + 1 < lines.size()) {
 
-                // Look ahead to see if this could be a channel name
-                boolean mightBeChannel = false;
-                for (int j = i + 1; j < Math.min(i + 5, lines.size()); j++) {
-                    String nextLine = lines.get(j).trim();
-                    if (nextLine.isEmpty()) continue;
-
-                    // If we find IIR or Parametric EQ soon after, it's likely a channel
-                    if (nextLine.startsWith("IIR") ||
-                        nextLine.contains("Parametric EQ") ||
-                        nextLine.contains("Frequency=")) {
-                        mightBeChannel = true;
-                        break;
-                    }
-                    // If we find biquad data, it's not a channel
-                    if (nextLine.contains("biquad")) {
-                        break;
-                    }
-                }
-
-                if (mightBeChannel) {
+                String nextLine = lines.get(i + 1).trim();
+                // In real data, channel names are always followed by IIR Crossover
+                if (nextLine.startsWith("IIR Crossover")) {
                     // Save previous section
-                    sections.add(new ChannelSection(currentChannel, channelStartLine, i));
+                    if (currentChannel != null) {
+                        sections.add(new ChannelSection(currentChannel, channelStartLine, i));
+                    }
                     currentChannel = line;
                     channelStartLine = i;
                 }
