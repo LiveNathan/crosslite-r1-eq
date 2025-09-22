@@ -305,6 +305,13 @@ public class ConversionCommands extends AbstractShellComponent {
                 list
                 convert-file -i "eq_settings.txt"
                 convert-directory -i "." -o "converted"
+                
+                Multi-Channel Support:
+                ----------------------
+                - Automatically detects multi-channel files
+                - Creates separate .rcp file for each channel
+                - Output files named after channel names
+                - Channels without EQ bands are skipped
 
                 Notes:
                 ------

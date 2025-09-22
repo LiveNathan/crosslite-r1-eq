@@ -1,0 +1,1115 @@
+Layer 1
+IIR Bypassed.ml
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 126.0Hz Gain= -2.0dB Qbp= 6.463
+Magnitude Mode Normal, Phase Mode Normal.
+2) 2Parametric EQ
+Frequency= 300.0Hz Gain= -2.6dB Qbp= 3.000
+Magnitude Mode Normal, Phase Mode Normal.
+3) 3Parametric EQ
+Frequency= 677.0Hz Gain= 0.9dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+4) 4Parametric EQ
+Frequency= 859.0Hz Gain= 0.8dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+5) 5Parametric EQ
+Frequency= 970.0Hz Gain= 0.8dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+6) 6Parametric EQ
+Frequency= 1188.1Hz Gain= 1.0dB Qbp= 3.000
+Magnitude Mode Normal, Phase Mode Normal.
+7) 7Parametric EQ
+Frequency= 2173.0Hz Gain= 0.8dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+8) 8Parametric EQ
+Frequency= 2517.0Hz Gain= 1.8dB Qbp= 0.584
+Magnitude Mode Normal, Phase Mode Normal.
+9) 9Parametric EQ
+Frequency= 3898.0Hz Gain= 1.0dB Qbp= 4.000
+Magnitude Mode Normal, Phase Mode Normal.
+10) 10Parametric EQ
+Frequency= 7053.0Hz Gain= 1.4dB Qbp= 5.144
+Magnitude Mode Normal, Phase Mode Normal.
+11) 11Parametric EQ
+Frequency= 7975.0Hz Gain= 2.1dB Qbp= 0.486
+Magnitude Mode Normal, Phase Mode Normal.
+12) 12Parametric EQ
+Frequency= 10750.0Hz Gain= -2.0dB Qbp= 6.964
+Magnitude Mode Normal, Phase Mode Normal.
+13) 13Parametric EQ
+Frequency= 15400.0Hz Gain= -2.2dB Qbp= 6.000
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=0.999670160271526109,
+b1=-1.99652097334232237,
+b2=0.997122401624057963,
+a1=-1.99652097334232237,
+a2=0.996792561895584073,
+biquad2,
+b0=0.997736608469275921,
+b1=-1.98097267569376978,
+b2=0.984764503734729568,
+a1=-1.98097267569376978,
+a2=0.9825011122040056,
+biquad3,
+b0=1.00129443505933091,
+b1=-1.96853177640766463,
+b2=0.97499249418859657,
+a1=-1.96853177640766463,
+a2=0.976286929247927371,
+biquad4,
+b0=1.00144566490640341,
+b1=-1.95759043947093336,
+b2=0.968585596783900215,
+a1=-1.95759043947093336,
+a2=0.970031261690303625,
+biquad5,
+b0=1.00166978577846111,
+b1=-1.94956345711898638,
+b2=0.963715433986986447,
+a1=-1.94956345711898638,
+a2=0.965385219765447666,
+biquad6,
+b0=1.00307074895483272,
+b1=-1.92613658142305821,
+b2=0.946596717783707797,
+a1=-1.92613658142305821,
+a2=0.949667466738540522,
+biquad7,
+b0=1.00353604596314438,
+b1=-1.84927806028557429,
+b2=0.923161464883836769,
+a1=-1.84927806028557429,
+a2=0.926697510846981043,
+biquad8,
+b0=1.04994986116891575,
+b1=-1.48192048375330976,
+b2=0.516210491425191487,
+a1=-1.48192048375330976,
+a2=0.566160352594107352,
+biquad9,
+b0=1.0070205204475382,
+b1=-1.64483226518637848,
+b2=0.877906386917402193,
+a1=-1.64483226518637848,
+a2=0.884926907364940507,
+biquad10,
+b0=1.01258311764910047,
+b1=-1.1196841919485514,
+b2=0.843525589491473493,
+a1=-1.1196841919485514,
+a2=0.856108707140574188,
+biquad11,
+b0=1.12873765124240921,
+b1=-0.532298213503904272,
+b2=-0.0701358304794928444,
+a1=-0.532298213503904272,
+a2=0.0586018207629161458,
+biquad12,
+b0=0.9831598436043818,
+b1=-0.299115576502685665,
+b2=0.853082565527055081,
+a1=-0.299115576502685665,
+a2=0.836242409131436992,
+biquad13,
+b0=0.98023439607888263,
+b1=0.784962285963577644,
+b2=0.843092091398669474,
+a1=0.784962285963577644,
+a2=0.823326487477552216,
+
+c
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 818.0Hz Gain= 1.0dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+2) 2Parametric EQ
+Frequency= 1086.0Hz Gain= 1.7dB Qbp= 3.266
+Magnitude Mode Normal, Phase Mode Normal.
+3) 3Parametric EQ
+Frequency= 2665.0Hz Gain= 1.1dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+4) 4Parametric EQ
+Frequency= 3902.0Hz Gain= 3.4dB Qbp= 1.444
+Magnitude Mode Normal, Phase Mode Normal.
+5) 5Parametric EQ
+Frequency= 7009.0Hz Gain= 1.1dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+6) 6Parametric EQ
+Frequency= 275.7Hz Gain= -3.0dB Qbp= 4.000
+Magnitude Mode Normal, Phase Mode Normal.
+7) 7Parametric EQ
+Frequency= 9050.0Hz Gain= -2.6dB Qbp= 6.000
+Magnitude Mode Normal, Phase Mode Normal.
+8) 8Parametric EQ
+Frequency= 3140.0Hz Gain= -2.0dB Qbp= 8.000
+Magnitude Mode Normal, Phase Mode Normal.
+9) 9Parametric EQ
+Frequency= 557.0Hz Gain= -1.9dB Qbp= 7.000
+Magnitude Mode Normal, Phase Mode Normal.
+10) 10Parametric EQ
+Frequency= 17350.0Hz Gain= -3.0dB Qbp= 6.000
+Magnitude Mode Normal, Phase Mode Normal.
+11) 12Parametric EQ
+Frequency= 154.0Hz Gain= -3.6dB Qbp= 3.000
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=1.00174268530231703,
+b1=-1.96014499253771524,
+b2=0.969693023955162991,
+a1=-1.96014499253771524,
+a2=0.971435709257480018,
+biquad2,
+b0=1.0045895170763337,
+b1=-1.93779470795978947,
+b2=0.952951516453944936,
+a1=-1.93779470795978947,
+a2=0.957541033530278529,
+biquad3,
+b0=1.00597950821894244,
+b1=-1.79629153312374434,
+b2=0.905442281373747382,
+a1=-1.79629153312374434,
+a2=0.911421789592689935,
+biquad4,
+b0=1.06935812652316375,
+b1=-1.49215938690039751,
+b2=0.64111187051302565,
+a1=-1.49215938690039751,
+a2=0.710469997036189516,
+biquad5,
+b0=1.01342774233207034,
+b1=-1.09474780169874175,
+b2=0.787658677815765262,
+a1=-1.09474780169874175,
+a2=0.801086420147835709,
+biquad6,
+b0=0.998151171599208076,
+b1=-1.98604510863190597,
+b2=0.989187970916553305,
+a1=-1.98604510863190597,
+a2=0.987339142515761603,
+biquad7,
+b0=0.975601827583778558,
+b1=-0.682214012219050536,
+b2=0.835769348925745725,
+a1=-0.682214012219050536,
+a2=0.811371176509524283,
+biquad8,
+b0=0.993731235211304908,
+b1=-1.77754173979464403,
+b2=0.945309840453199657,
+a1=-1.77754173979464403,
+a2=0.939041075664504454,
+biquad9,
+b0=0.998735896903270137,
+b1=-1.98185260983019407,
+b2=0.988396203192762002,
+a1=-1.98185260983019407,
+a2=0.987132100096032028,
+biquad10,
+b0=0.975883729508600694,
+b1=1.18248299834851478,
+b2=0.858966998870411391,
+a1=1.18248299834851478,
+a2=0.834850728379012197,
+biquad11,
+b0=0.998283403575394357,
+b1=-1.98947743954339318,
+b2=0.991598333664715947,
+a1=-1.98947743954339318,
+a2=0.989881737240110304,
+
+mr
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 638.0Hz Gain= 0.8dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+2) 2Parametric EQ
+Frequency= 800.0Hz Gain= 2.1dB Qbp= 3.266
+Magnitude Mode Normal, Phase Mode Normal.
+3) 3Parametric EQ
+Frequency= 1085.0Hz Gain= 1.0dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+4) 4Parametric EQ
+Frequency= 1374.0Hz Gain= 2.0dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+5) 5Parametric EQ
+Frequency= 1953.0Hz Gain= 1.6dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+6) 6Parametric EQ
+Frequency= 2878.0Hz Gain= 1.4dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+7) 7Parametric EQ
+Frequency= 3904.0Hz Gain= 2.6dB Qbp= 1.889
+Magnitude Mode Normal, Phase Mode Normal.
+8) 8Parametric EQ
+Frequency= 5522.0Hz Gain= 1.5dB Qbp= 2.871
+Magnitude Mode Normal, Phase Mode Normal.
+9) 9Parametric EQ
+Frequency= 11683.0Hz Gain= 1.1dB Qbp= 3.889
+Magnitude Mode Normal, Phase Mode Normal.
+10) 10Parametric EQ
+Frequency= 12402.0Hz Gain= 1.5dB Qbp= 6.004
+Magnitude Mode Normal, Phase Mode Normal.
+11) 11Parametric EQ
+Frequency= 13307.0Hz Gain= 1.4dB Qbp= 5.144
+Magnitude Mode Normal, Phase Mode Normal.
+12) 12Parametric EQ
+Frequency= 14059.0Hz Gain= 1.2dB Qbp= 0.367
+Magnitude Mode Normal, Phase Mode Normal.
+13) 13Parametric EQ
+Frequency= 16823.9Hz Gain= -5.0dB Qbp= 4.000
+Magnitude Mode Normal, Phase Mode Normal.
+14) 14Parametric EQ
+Frequency= 300.0Hz Gain= -1.4dB Qbp= 4.000
+Magnitude Mode Normal, Phase Mode Normal.
+15) 15Parametric EQ
+Frequency= 180.0Hz Gain= -3.0dB Qbp= 3.000
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=1.00110648376148537,
+b1=-1.9701719185259221,
+b2=0.97595602765107714,
+a1=-1.9701719185259221,
+a2=0.977062511412562617,
+biquad2,
+b0=1.00430780292978117,
+b1=-1.95771540994702309,
+b2=0.964191250801034516,
+a1=-1.95771540994702309,
+a2=0.968499053730815573,
+biquad3,
+b0=1.00229750555960595,
+b1=-1.9425832960859879,
+b2=0.96004416525159264,
+a1=-1.9425832960859879,
+a2=0.962341670811198812,
+biquad4,
+b0=1.00613095361891247,
+b1=-1.9211458461207962,
+b2=0.94651213709644677,
+a1=-1.9211458461207962,
+a2=0.952643090715359131,
+biquad5,
+b0=1.00670438837448239,
+b1=-1.87086097077043778,
+b2=0.927002312092519043,
+a1=-1.87086097077043778,
+a2=0.933706700467001438,
+biquad6,
+b0=1.00830869021082714,
+b1=-1.77139650633241064,
+b2=0.896679230132600313,
+a1=-1.77139650633241064,
+a2=0.904987920343427565,
+biquad7,
+b0=1.03999694228794715,
+b1=-1.54453369929633011,
+b2=0.730769839606444482,
+a1=-1.54453369929633011,
+a2=0.770766781894391628,
+biquad8,
+b0=1.0194730402257246,
+b1=-1.34493260474863208,
+b2=0.773918894814078717,
+a1=-1.34493260474863208,
+a2=0.793391935039803431,
+biquad9,
+b0=1.01536885709570535,
+b1=-0.0735221507118456324,
+b2=0.756962611028935916,
+a1=-0.0735221507118456324,
+a2=0.772331468124641374,
+biquad10,
+b0=1.01447273490477619,
+b1=0.0971181942309136959,
+b2=0.831972210584138727,
+a1=0.0971181942309136959,
+a2=0.846444945488914913,
+biquad11,
+b0=1.01528767947332321,
+b1=0.310741675256784144,
+b2=0.809893644775506294,
+a1=0.310741675256784144,
+a2=0.825181324248829395,
+biquad12,
+b0=1.08410693081954812,
+b1=0.230217628256351448,
+b2=-0.219508549352616183,
+a1=0.230217628256351448,
+a2=-0.135401618533068063,
+biquad13,
+b0=0.933420069609497416,
+b1=1.00102094065159264,
+b2=0.762324883146391685,
+a1=1.00102094065159264,
+a2=0.69574495275588899,
+biquad14,
+b0=0.99914661471117383,
+b1=-1.98700145388797389,
+b2=0.98938792724271718,
+a1=-1.98700145388797389,
+a2=0.988534541953891121,
+biquad15,
+b0=0.998389053870709309,
+b1=-1.98841609321941548,
+b2=0.990579116810246018,
+a1=-1.98841609321941548,
+a2=0.988968170680955105,
+
+rUs
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 61.7Hz Gain= -8.0dB Qbp= 6.000
+Magnitude Mode Normal, Phase Mode Normal.
+2) 2Parametric EQ
+Frequency= 318.0Hz Gain= -3.0dB Qbp= 4.499
+Magnitude Mode Normal, Phase Mode Normal.
+3) 3Parametric EQ
+Frequency= 738.0Hz Gain= 1.0dB Qbp= 3.736
+Magnitude Mode Normal, Phase Mode Normal.
+4) 4Parametric EQ
+Frequency= 1226.0Hz Gain= 2.4dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+5) 5Parametric EQ
+Frequency= 1947.0Hz Gain= 3.4dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+6) 6Parametric EQ
+Frequency= 4588.0Hz Gain= 2.0dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+7) 7Parametric EQ
+Frequency= 6949.0Hz Gain= 5.0dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+8) 8Parametric EQ
+Frequency= 14165.0Hz Gain= 5.0dB Qbp= 2.759
+Magnitude Mode Normal, Phase Mode Normal.
+9) 9Parametric EQ
+Frequency= 451.0Hz Gain= -2.0dB Qbp= 5.000
+Magnitude Mode Normal, Phase Mode Normal.
+10) 10Parametric EQ
+Frequency= 585.0Hz Gain= -2.0dB Qbp= 8.000
+Magnitude Mode Normal, Phase Mode Normal.
+11) 11Parametric EQ
+Frequency= 1596.0Hz Gain= -2.0dB Qbp= 7.000
+Magnitude Mode Normal, Phase Mode Normal.
+12) 12Parametric EQ
+Frequency= 14300.0Hz Gain= -3.0dB Qbp= 8.000
+Magnitude Mode Normal, Phase Mode Normal.
+13) 13Parametric EQ
+Frequency= 112.0Hz Gain= -3.0dB Qbp= 4.000
+Magnitude Mode Normal, Phase Mode Normal.
+14) 14Parametric EQ
+Frequency= 165.0Hz Gain= -2.0dB Qbp= 4.000
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=0.998984164458259216,
+b1=-1.99655941058854514,
+b2=0.997640365717071598,
+a1=-1.99655941058854514,
+a2=0.996624530175331036,
+biquad2,
+b0=0.998104473258530911,
+b1=-1.98529811237536391,
+b2=0.988914876984559932,
+a1=-1.98529811237536391,
+a2=0.987019350243090732,
+biquad3,
+b0=1.00155502595339008,
+b1=-1.96530539483781164,
+b2=0.972956600795431448,
+a1=-1.96530539483781164,
+a2=0.974511626748821524,
+biquad4,
+b0=1.00691935611609318,
+b1=-1.9313763156464796,
+b2=0.949597786945958866,
+a1=-1.9313763156464796,
+a2=0.956517143062052044,
+biquad5,
+b0=1.0162304438048031,
+b1=-1.86983217660138701,
+b2=0.916016854695406946,
+a1=-1.86983217660138701,
+a2=0.932247298500210042,
+biquad6,
+b0=1.01886776339045038,
+b1=-1.52979292922102572,
+b2=0.835393251318686136,
+a1=-1.52979292922102572,
+a2=0.854261014709136623,
+biquad7,
+b0=1.07698370423111767,
+b1=-1.10661165291197938,
+b2=0.725185791098926336,
+a1=-1.10661165291197938,
+a2=0.802169495330044113,
+biquad8,
+b0=1.11534759802708594,
+b1=0.476355142371544193,
+b2=0.588235468570250552,
+a1=0.476355142371544193,
+a2=0.703583066597336382,
+biquad9,
+b0=0.998483565698006892,
+b1=-1.98179532102504585,
+b2=0.986770275051983336,
+a1=-1.98179532102504585,
+a2=0.985253840749990117,
+biquad10,
+b0=0.998769395992724407,
+b1=-1.98220732165051738,
+b2=0.989263924909384418,
+a1=-1.98220732165051738,
+a2=0.988033320902108825,
+biquad11,
+b0=0.99623444191235988,
+b1=-1.92069168825281,
+b2=0.967148396927067777,
+a1=-1.92069168825281,
+a2=0.963382838839427546,
+biquad12,
+b0=0.977290820896540735,
+b1=0.5469669470157279,
+b2=0.867195730646145524,
+a1=0.5469669470157279,
+a2=0.844486551542686148,
+biquad13,
+b0=0.999245964380451323,
+b1=-1.99462195192975233,
+b2=0.995590366826351602,
+a1=-1.99462195192975233,
+a2=0.994836331206803037,
+biquad14,
+b0=0.999303373468501843,
+b1=-1.9927609469607499,
+b2=0.993922468391081781,
+a1=-1.9927609469607499,
+a2=0.993225841859583736,
+
+rDs
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 424.7Hz Gain= -8.0dB Qbp= 5.000
+Magnitude Mode Normal, Phase Mode Normal.
+2) 2Parametric EQ
+Frequency= 200.0Hz Gain= -4.0dB Qbp= 8.000
+Magnitude Mode Normal, Phase Mode Normal.
+3) 3Parametric EQ
+Frequency= 340.0Hz Gain= -2.5dB Qbp= 6.000
+Magnitude Mode Normal, Phase Mode Normal.
+4) 4Parametric EQ
+Frequency= 582.0Hz Gain= 2.0dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+5) 5Parametric EQ
+Frequency= 971.0Hz Gain= 3.0dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+6) 6Parametric EQ
+Frequency= 1388.0Hz Gain= 1.0dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+7) 7Parametric EQ
+Frequency= 2606.0Hz Gain= 2.5dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+8) 8Parametric EQ
+Frequency= 4666.0Hz Gain= -2.0dB Qbp= 7.000
+Magnitude Mode Normal, Phase Mode Normal.
+9) 9Parametric EQ
+Frequency= 7478.0Hz Gain= 1.7dB Qbp= 1.475
+Magnitude Mode Normal, Phase Mode Normal.
+10) 10Parametric EQ
+Frequency= 11306.7Hz Gain= -3.1dB Qbp= 4.000
+Magnitude Mode Normal, Phase Mode Normal.
+11) 11Parametric EQ
+Frequency= 14606.0Hz Gain= -2.0dB Qbp= 7.000
+Magnitude Mode Normal, Phase Mode Normal.
+12) 12Parametric EQ
+Frequency= 72.0Hz Gain= -7.0dB Qbp= 3.000
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=0.991714919623311486,
+b1=-1.9694226493196223,
+b2=0.980754995380303307,
+a1=-1.9694226493196223,
+a2=0.972469915003614904,
+biquad2,
+b0=0.999045554927177282,
+b1=-1.99414387636132306,
+b2=0.995781898980672708,
+a1=-1.99414387636132306,
+a2=0.994827453907849768,
+biquad3,
+b0=0.998769519505886438,
+b1=-1.98818961548105744,
+b2=0.99139080032653859,
+a1=-1.98818961548105744,
+a2=0.99016031983242514,
+biquad4,
+b0=1.00264445908838251,
+b1=-1.97383169458196539,
+b2=0.976929124902015111,
+a1=-1.97383169458196539,
+a2=0.979573583990397734,
+biquad5,
+b0=1.00696995860509841,
+b1=-1.95034833115960593,
+b2=0.959239378237335405,
+a1=-1.95034833115960593,
+a2=0.96620933684243393,
+biquad6,
+b0=1.00291762805592577,
+b1=-1.92004432899201038,
+b2=0.949259637709046644,
+a1=-1.92004432899201038,
+a2=0.952177265764972524,
+biquad7,
+b0=1.01482861733208218,
+b1=-1.80096027695011851,
+b2=0.896249856780367171,
+a1=-1.80096027695011851,
+a2=0.911078474112449243,
+biquad8,
+b0=0.989913394531117041,
+b1=-1.55805316768180191,
+b2=0.912002111903506218,
+a1=-1.55805316768180191,
+a2=0.90191550643462326,
+biquad9,
+b0=1.0474634423526934,
+b1=-0.870924491063719497,
+b2=0.513438353223488075,
+a1=-0.870924491063719497,
+a2=0.560901795576181361,
+biquad10,
+b0=0.954671723699848651,
+b1=-0.153884075028659778,
+b2=0.743298840493437307,
+a1=-0.153884075028659778,
+a2=0.697970564193285847,
+biquad11,
+b0=0.983932589641082655,
+b1=0.616823490249717054,
+b2=0.859824181373375129,
+a1=0.616823490249717054,
+a2=0.843756771014457785,
+biquad12,
+b0=0.998061068488607428,
+b1=-1.99290308492094259,
+b2=0.994930530951105174,
+a1=-1.99290308492094259,
+a2=0.99299159943971238,
+
+s
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 32.0Hz Gain= 2.0dB Qbp= 5.000
+Magnitude Mode Normal, Phase Mode Normal.
+2) 3Parametric EQ
+Frequency= 42.0Hz Gain= -2.0dB Qbp= 8.000
+Magnitude Mode Normal, Phase Mode Normal.
+3) 4Parametric EQ
+Frequency= 48.0Hz Gain= -1.6dB Qbp= 9.000
+Magnitude Mode Normal, Phase Mode Normal.
+4) 5Parametric EQ
+Frequency= 57.0Hz Gain= -2.0dB Qbp= 9.000
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=1.00010841269403161,
+b1=-1.99914505658800645,
+b2=0.999054182485173192,
+a1=-1.99914505658800645,
+a2=0.999162595179204582,
+biquad2,
+b0=0.999911069117844775,
+b1=-1.99910500293522841,
+b2=0.999224146335418894,
+a1=-1.99910500293522841,
+a2=0.999135215453263781,
+biquad3,
+b0=0.999929426475035021,
+b1=-1.9991215569736267,
+b2=0.999231592225544696,
+a1=-1.9991215569736267,
+a2=0.999161018700579717,
+biquad4,
+b0=0.99989272832680709,
+b1=-1.9989012238995516,
+b2=0.999064137015897691,
+a1=-1.9989012238995516,
+a2=0.998956865342704558,
+
+of
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 309.0Hz Gain= -5.0dB Qbp= 6.266
+Magnitude Mode Normal, Phase Mode Normal.
+2) 2Parametric EQ
+Frequency= 447.0Hz Gain= -2.0dB Qbp= 3.889
+Magnitude Mode Normal, Phase Mode Normal.
+3) 3Parametric EQ
+Frequency= 857.0Hz Gain= 1.0dB Qbp= 3.997
+Magnitude Mode Normal, Phase Mode Normal.
+4) 4Parametric EQ
+Frequency= 1159.0Hz Gain= 3.0dB Qbp= 3.889
+Magnitude Mode Normal, Phase Mode Normal.
+5) 5Parametric EQ
+Frequency= 1732.0Hz Gain= 3.0dB Qbp= 3.786
+Magnitude Mode Normal, Phase Mode Normal.
+6) 6Parametric EQ
+Frequency= 2730.0Hz Gain= 3.0dB Qbp= 3.786
+Magnitude Mode Normal, Phase Mode Normal.
+7) 7Parametric EQ
+Frequency= 4648.0Hz Gain= 3.0dB Qbp= 3.343
+Magnitude Mode Normal, Phase Mode Normal.
+8) 8Parametric EQ
+Frequency= 6191.0Hz Gain= 2.5dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+9) 9Parametric EQ
+Frequency= 9067.0Hz Gain= 3.0dB Qbp= 0.699
+Magnitude Mode Normal, Phase Mode Normal.
+10) 10Parametric EQ
+Frequency= 12526.0Hz Gain= 1.0dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+11) 11Parametric EQ
+Frequency= 16288.0Hz Gain= 3.0dB Qbp= 3.000
+Magnitude Mode Normal, Phase Mode Normal.
+12) 12Parametric EQ
+Frequency= 166.0Hz Gain= -2.0dB Qbp= 4.000
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=0.997503054912575071,
+b1=-1.98696304691787162,
+b2=0.991086477382147723,
+a1=-1.98696304691787162,
+a2=0.988589532294722684,
+biquad2,
+b0=0.998071526427758204,
+b1=-1.97785647144537524,
+b2=0.983175548787875164,
+a1=-1.97785647144537524,
+a2=0.981247075215633368,
+biquad3,
+b0=1.0016851167149301,
+b1=-1.95998153600975633,
+b2=0.970694197142631276,
+a1=-1.95998153600975633,
+a2=0.972379313857561267,
+biquad4,
+b0=1.00786307904443895,
+b1=-1.93934467158783574,
+b2=0.954016370974446803,
+a1=-1.93934467158783574,
+a2=0.961879450018885751,
+biquad5,
+b0=1.0118934465796301,
+b1=-1.89263423289940658,
+b2=0.930446605933620496,
+a1=-1.89263423289940658,
+a2=0.942340052513250703,
+biquad6,
+b0=1.01821620084145303,
+b1=-1.79091605591830993,
+b2=0.893470863383886038,
+a1=-1.79091605591830993,
+a2=0.91168706422533885,
+biquad7,
+b0=1.03248956404783865,
+b1=-1.51185653793041297,
+b2=0.809999613136997976,
+a1=-1.51185653793041297,
+a2=0.842489177184836513,
+biquad8,
+b0=1.03053324169240845,
+b1=-1.25222588066205631,
+b2=0.786370628656430814,
+a1=-1.25222588066205631,
+a2=0.816903870348839267,
+biquad9,
+b0=1.16450406878031765,
+b1=-0.450407203474362749,
+b2=0.0379730345788509074,
+a1=-0.450407203474362749,
+a2=0.202477103359168575,
+biquad10,
+b0=1.01486746832936081,
+b1=0.120831960166786642,
+b2=0.74144040469831185,
+a1=0.120831960166786642,
+a2=0.756307873027672439,
+biquad11,
+b0=1.05100949723017401,
+b1=0.932938593970495944,
+b2=0.701694236550858719,
+a1=0.932938593970495944,
+a2=0.752703733781032613,
+biquad12,
+b0=0.99929916653630968,
+b1=-1.99271439548955587,
+b2=0.993885766137839299,
+a1=-1.99271439548955587,
+a2=0.99318493267414909,
+
+ffOut
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 173.2Hz Gain= -3.0dB Qbp= 3.000
+Magnitude Mode Normal, Phase Mode Normal.
+2) 2Parametric EQ
+Frequency= 279.8Hz Gain= -4.0dB Qbp= 5.000
+Magnitude Mode Normal, Phase Mode Normal.
+3) 3Parametric EQ
+Frequency= 1574.0Hz Gain= -1.0dB Qbp= 6.000
+Magnitude Mode Normal, Phase Mode Normal.
+4) 4Parametric EQ
+Frequency= 865.0Hz Gain= 3.0dB Qbp= 2.134
+Magnitude Mode Normal, Phase Mode Normal.
+5) 5Parametric EQ
+Frequency= 1216.0Hz Gain= 0.8dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+6) 6Parametric EQ
+Frequency= 1379.0Hz Gain= 1.4dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+7) 7Parametric EQ
+Frequency= 2045.0Hz Gain= 0.8dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+8) 8Parametric EQ
+Frequency= 3916.0Hz Gain= 1.6dB Qbp= 0.537
+Magnitude Mode Normal, Phase Mode Normal.
+9) 9Parametric EQ
+Frequency= 8991.0Hz Gain= -2.5dB Qbp= 5.054
+Magnitude Mode Normal, Phase Mode Normal.
+10) 10Parametric EQ
+Frequency= 13191.0Hz Gain= 0.0dB Qbp= 6.004
+Magnitude Mode Normal, Phase Mode Normal.
+11) 11Parametric EQ
+Frequency= 14080.0Hz Gain= 0.0dB Qbp= 5.764
+Magnitude Mode Normal, Phase Mode Normal.
+12) 12Parametric EQ
+Frequency= 16999.0Hz Gain= 0.0dB Qbp= 6.266
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=0.998449578184349096,
+b1=-1.9888713827033575,
+b2=0.990933065634837295,
+a1=-1.9888713827033575,
+a2=0.989382643819186391,
+biquad2,
+b0=0.997870622463458923,
+b1=-1.98712643714259163,
+b2=0.990589369872430514,
+a1=-1.98712643714259163,
+a2=0.988459992335889326,
+biquad3,
+b0=0.997958818842869966,
+b1=-1.92095376435690501,
+b2=0.964501893514530639,
+a1=-1.92095376435690501,
+a2=0.962460712357400716,
+biquad4,
+b0=1.01063941925285161,
+b1=-1.93594298332796533,
+b2=0.937780212407191227,
+a1=-1.93594298332796533,
+a2=0.948419631660042839,
+biquad5,
+b0=1.00202960407966968,
+b1=-1.93317511313053236,
+b2=0.955896556217574744,
+a1=-1.93317511313053236,
+a2=0.957926160297244422,
+biquad6,
+b0=1.00415585612684821,
+b1=-1.92075310967944057,
+b2=0.948320825113375121,
+a1=-1.92075310967944057,
+a2=0.952476681240223555,
+biquad7,
+b0=1.00333994933394544,
+b1=-1.86199754674351792,
+b2=0.927422658851874248,
+a1=-1.86199754674351792,
+a2=0.930762608185819795,
+biquad8,
+b0=1.06340902398743164,
+b1=-1.19653686084181898,
+b2=0.309599640562310874,
+a1=-1.19653686084181898,
+a2=0.373008664549742464,
+biquad9,
+b0=0.972839590691019218,
+b1=-0.684191297402100606,
+b2=0.809969042116014615,
+a1=-0.684191297402100606,
+a2=0.782808632807033722,
+biquad10,
+b0=1,
+b1=0.286935934628107625,
+b2=0.847971424473672908,
+a1=0.286935934628107625,
+a2=0.847971424473672908,
+biquad11,
+b0=1,
+b1=0.496368160365325328,
+b2=0.845784960103263983,
+a1=0.496368160365325328,
+a2=0.845784960103263983,
+biquad12,
+b0=1,
+b1=1.14483284811409081,
+b2=0.880914486009231279,
+a1=1.14483284811409081,
+a2=0.880914486009231279,
+
+ffInE4
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 150.0Hz Gain= -4.0dB Qbp= 4.000
+Magnitude Mode Normal, Phase Mode Normal.
+2) 2Parametric EQ
+Frequency= 256.0Hz Gain= 1.8dB Qbp= 3.707
+Magnitude Mode Normal, Phase Mode Normal.
+3) 3Parametric EQ
+Frequency= 452.0Hz Gain= 1.1dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+4) 4Parametric EQ
+Frequency= 542.0Hz Gain= 3.0dB Qbp= 3.786
+Magnitude Mode Normal, Phase Mode Normal.
+5) 5Parametric EQ
+Frequency= 854.0Hz Gain= 2.6dB Qbp= 3.786
+Magnitude Mode Normal, Phase Mode Normal.
+6) 6Parametric EQ
+Frequency= 1091.0Hz Gain= 2.0dB Qbp= 3.688
+Magnitude Mode Normal, Phase Mode Normal.
+7) 7Parametric EQ
+Frequency= 1446.0Hz Gain= 1.5dB Qbp= 1.039
+Magnitude Mode Normal, Phase Mode Normal.
+8) 8Parametric EQ
+Frequency= 2620.0Hz Gain= 1.5dB Qbp= 2.012
+Magnitude Mode Normal, Phase Mode Normal.
+9) 9Parametric EQ
+Frequency= 5657.0Hz Gain= 1.5dB Qbp= 3.595
+Magnitude Mode Normal, Phase Mode Normal.
+10) 10Parametric EQ
+Frequency= 8844.0Hz Gain= 3.0dB Qbp= 0.291
+Magnitude Mode Normal, Phase Mode Normal.
+11) 11Parametric EQ
+Frequency= 11018.0Hz Gain= 4.2dB Qbp= 3.000
+Magnitude Mode Normal, Phase Mode Normal.
+12) 12Parametric EQ
+Frequency= 15999.0Hz Gain= 0.0dB Qbp= 3.343
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=0.998570110157001589,
+b1=-1.99186679003063638,
+b2=0.993680705180405299,
+a1=-1.99186679003063638,
+a2=0.992250815337406999,
+biquad2,
+b0=1.00103590900091577,
+b1=-1.9898848244357108,
+b2=0.989966700712410441,
+a1=-1.9898848244357108,
+a2=0.99100260971332621,
+biquad3,
+b0=1.00107375084063555,
+b1=-1.98062201489783729,
+b2=0.983020103636302878,
+a1=-1.98062201489783729,
+a2=0.984093854476938534,
+biquad4,
+b0=1.00382630417190466,
+b1=-1.97646512181405431,
+b2=0.977623606403368761,
+a1=-1.97646512181405431,
+a2=0.981449910575273421,
+biquad5,
+b0=1.00506650624753746,
+b1=-1.95866011442355203,
+b2=0.965895985752127539,
+a1=-1.95866011442355203,
+a2=0.970962491999665,
+biquad6,
+b0=1.00490161971160186,
+b1=-1.94216368483127155,
+b2=0.9572371315400654,
+a1=-1.94216368483127155,
+a2=0.962138751251667146,
+biquad7,
+b0=1.01565084759535917,
+b1=-1.80119055650780524,
+b2=0.818294376202185369,
+a1=-1.80119055650780524,
+a2=0.833945223797544544,
+biquad8,
+b0=1.01453769152489892,
+b1=-1.7382669860266966,
+b2=0.831218067199424926,
+a1=-1.7382669860266966,
+a2=0.845755758724323847,
+biquad9,
+b0=1.01617035593164795,
+b1=-1.34962439574550386,
+b2=0.812262908210539036,
+a1=-1.34962439574550386,
+a2=0.828433264142187209,
+biquad10,
+b0=1.25224567565693401,
+b1=-0.311981791978600487,
+b2=-0.475143707338391563,
+a1=-0.311981791978600487,
+a2=-0.222898031681457637,
+biquad11,
+b0=1.08820109121235586,
+b1=-0.220013246730605405,
+b2=0.628107500150247078,
+a1=-0.220013246730605405,
+a2=0.716308591362603053,
+biquad12,
+b0=1,
+b1=0.885117008789347959,
+b2=0.770635479935704692,
+a1=0.885117008789347959,
+a2=0.770635479935704692,
+
+ffInE6
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+1) 1Parametric EQ
+Frequency= 2755.0Hz Gain= 2.5dB Qbp= 5.764
+Magnitude Mode Normal, Phase Mode Normal.
+2) 2Parametric EQ
+Frequency= 8757.0Hz Gain= 2.0dB Qbp= 3.423
+Magnitude Mode Normal, Phase Mode Normal.
+3) 3Parametric EQ
+Frequency= 155.0Hz Gain= -5.0dB Qbp= 3.000
+Magnitude Mode Normal, Phase Mode Normal.
+4) 4Parametric EQ
+Frequency= 17500.0Hz Gain= -2.7dB Qbp= 3.000
+Magnitude Mode Normal, Phase Mode Normal.
+
+biquad1,
+b0=1.00990561192767791,
+b1=-1.81577111028222648,
+b2=0.930694235803682157,
+a1=-1.81577111028222648,
+a2=0.940599847731360294,
+biquad2,
+b0=1.03041591584292669,
+b1=-0.726979371837476185,
+b2=0.734644487984056349,
+a1=-0.726979371837476185,
+a2=0.76506040382698326,
+biquad3,
+b0=0.997384099379085898,
+b1=-1.98763674539526169,
+b2=0.990661833346676235,
+a1=-1.98763674539526169,
+a2=0.988045932725762132,
+biquad4,
+b0=0.960986315549335779,
+b1=1.12613271095210887,
+b2=0.746968273926895021,
+a1=1.12613271095210887,
+a2=0.707954589476230689,
+
+Layer 2
+IIR Bypassed.L 2 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 3
+IIR Bypassed.L 3 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 4
+IIR Bypassed.L 4 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 5
+IIR Bypassed.L 5 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 6
+IIR Bypassed.L 6 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 7
+IIR Bypassed.L 7 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 8
+IIR Bypassed.L 8 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 9
+IIR Bypassed.L 9 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.
+Layer 10
+IIR Bypassed.L 10 Ch 1
+IIR Crossover HPF: Bypassed.
+
+IIR Crossover LPF: Bypassed.
+
+IIR Bypassed.

@@ -4,6 +4,8 @@ import dev.nathanlively.crosslite_r1_eq.domain.CrossLiteSettings;
 import dev.nathanlively.crosslite_r1_eq.domain.EqBand;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CrossLiteParserTest {
@@ -97,5 +99,58 @@ class CrossLiteParserTest {
         assertThat(band.frequency()).isEqualTo(1001.0);
         assertThat(band.gain()).isEqualTo(-6.0);
         assertThat(band.qFactor()).isEqualTo(0.750);
+    }
+
+    @Test
+    void shouldParseMultipleChannels() {
+        String content = """
+        Layer 1
+        IIR Bypassed.ml
+        IIR Crossover HPF: Bypassed.
+        1) 1Parametric EQ
+        Frequency= 126.0Hz Gain= -2.0dB Qbp= 6.463
+        2) 2Parametric EQ
+        Frequency= 300.0Hz Gain= -2.6dB Qbp= 3.000
+        
+        c
+        IIR Crossover HPF: Bypassed.
+        1) 1Parametric EQ
+        Frequency= 818.0Hz Gain= 1.0dB Qbp= 3.688
+        
+        mr
+        IIR Crossover HPF: Bypassed.
+        1) 1Parametric EQ
+        Frequency= 638.0Hz Gain= 0.8dB Qbp= 3.595
+        """;
+
+        Map<String, CrossLiteSettings> result = parser.parseMultiChannel(content);
+
+        assertThat(result).hasSize(3);
+        assertThat(result).containsKeys("ml", "c", "mr");
+
+        // Verify first channel
+        CrossLiteSettings mlChannel = result.get("ml");
+        assertThat(mlChannel.eqBands()).hasSize(2);
+        assertThat(mlChannel.eqBands().get(0).frequency()).isEqualTo(126.0);
+        assertThat(mlChannel.eqBands().get(1).frequency()).isEqualTo(300.0);
+
+        // Verify second channel
+        CrossLiteSettings cChannel = result.get("c");
+        assertThat(cChannel.eqBands()).hasSize(1);
+        assertThat(cChannel.eqBands().get(0).frequency()).isEqualTo(818.0);
+    }
+
+    @Test
+    void shouldHandleSingleChannelAsDefault() {
+        String content = """
+            Frequency= 1001.0Hz Gain= -6.0dB Qbp= 0.750
+            Frequency= 102.0Hz Gain= 4.3dB Qbp= 1.200
+            """;
+
+        Map<String, CrossLiteSettings> result = parser.parseMultiChannel(content);
+
+        assertThat(result).hasSize(1);
+        assertThat(result).containsKey("default");
+        assertThat(result.get("default").eqBands()).hasSize(2);
     }
 }
