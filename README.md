@@ -18,8 +18,7 @@ Download the latest version for your operating system from the [Releases page](h
 ### Step 1: Download and Place the Executable
 
 1. Download `crosslite-r1-eq.exe` from the releases page
-2. Create a folder for the tool (recommended: `C:\Tools\CrossLite-R1`)
-3. Move `crosslite-r1-eq.exe` to this folder
+2. Move `crosslite-r1-eq.exe` to your desired folder like "C:\Program Files\crosslite-r1-eq.exe"
 
 ### Step 2: Add to Windows PATH (One-Time Setup)
 
@@ -30,14 +29,14 @@ This allows you to run the converter from any folder without typing the full pat
 2. Click "Advanced system settings" on the right
 3. Click "Environment Variables" button
 4. In the bottom section ("System variables"), find and select "Path", then click "Edit"
-5. Click "New" and add: `C:\Tools\CrossLite-R1` (or wherever you placed the exe)
+5. Click "New" and add: `C:\Program Files\crosslite-r1-eq.exe` (or wherever you placed the exe)
 6. Click "OK" on all windows
 7. **Close and reopen any Command Prompt windows** for changes to take effect
 
 #### Option B: Using Command Line (Advanced)
 Open Command Prompt as Administrator and run:
 ```cmd
-setx /M PATH "%PATH%;C:\Tools\CrossLite-R1"
+setx /M PATH "%PATH%;C:\Program Files\crosslite-r1-eq.exe"
 ```
 
 ### Step 3: Verify Installation
